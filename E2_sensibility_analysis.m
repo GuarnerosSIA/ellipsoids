@@ -4,15 +4,15 @@ clear all
 %% Hyperparameters of the program
 % Analisis de sensibilidad. En este caso se van a realizar cambios en los
 % valores que definen las elipses para poder determinar que tanto cambian
-% los valores de clasificaci髇 si se realiza un cambio en la precision del
+% los valores de clasificaci贸n si se realiza un cambio en la precision del
 % algoritmo. La semilla sera fija para que se pueda evaluar el cambio
 % rng(1);
 
-% Tama駉 de las elipsioides iniciales
+% Tama帽o de las elipsioides iniciales
 dd = 3;
 % Numero de datos dentro de la elipse
 in_data = 60;
-% Numero asociado a la desviaci髇 estandar
+% Numero asociado a la desviaci贸n estandar
 gamma_par = 3;
 L1 = 1/dd^2;
 L2 = 1/dd^2;
@@ -74,7 +74,7 @@ for MM = 1:Mparam
     %In this cycle, the patterns are presented to the algorithm in an
     %aleatory order. Then it is evaluated if the new pattern belongs to
     %some ellipsoid. Notice that pattern can be in different ellipsoids,
-    %thus, each pattern is eval駏ated against all the existen ellipsoids
+    %thus, each pattern is eval帽uated against all the existen ellipsoids
         j = randi(nn);
         nd = data(j,:);
         new_c = 0;%Flag to evaluate if the pattern is oputside every ellipsoid
@@ -101,7 +101,7 @@ for MM = 1:Mparam
                     distB(k) = dd;
                 end
             end
-%             if min(distB)>0.5%%Este fi lo cabao de a馻dir
+%             if min(distB)>0.5%%Este fi lo cabao de a帽adir
             E(NE + 1,:) = createEllipsoid(nd,min(distB));
 %%            plotellipsoid(E(NE + 1,:))
 %             end
@@ -139,11 +139,11 @@ end
 % toc
 %% Ellipsoid Reduction
 E = EllipsoidReduction(E,0.25);%Estaba en 0.2
-%% Clasificaci髇 de los clusters
+%% Clasificaci贸n de los clusters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Clasificaci髇 Segura
+%% Clasificaci贸n Segura
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %For each of the labels, the patterns are asigned a number depending on the
 %closest ellipsoid. Then if the distance to the closest ellipsoid is less
@@ -250,11 +250,7 @@ final_accuracy = TOTAL/size(data,1);
 
 % disp(final_accuracy)
 
-% Verify if the ellipsoids number is equal to two
-if size(E) > 2
-    disp(size(E))
-    disp('THERE IS SOMETHING BAD IN HERE')
-end
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
